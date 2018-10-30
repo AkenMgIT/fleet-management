@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="resources/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="resources/static/css/custom.css" th:href="@{/css/custom.css}">
+    <title>Side Menu</title>
+</head>
+
+<body>
+    <div th:fragment="nav_menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Fleet Management</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="table-data">table-data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Code (header) HTML -->
+    <div class="container">
+        <h1>Nav Menu</h1>
+        <div th:fragment="side_menu">
+            <div class="list-group mb-4">
+                <a href="#" class="list-group-item list-group-item-action active ">
+                    Menu
+                </a>
+                <a href="" th:href="@{/}" class="list-group-item list-group-item-action">Home</a>
+            </div>
+            <div class="list-group mb-4">
+                <a href="#" class="list-group-item list-group-item-action active ">
+                    Cars
+                </a>
+                <a href="cars/create" th:href="@{/cars/create}" class="list-group-item list-group-item-action">New Car</a>
+                <a href="cars" th:href="@{/cars}" class="list-group-item list-group-item-action">List Cars</a>
+            </div>
+            <div class="list-group mb-4">
+                <a href="#" class="list-group-item list-group-item-action active ">
+                    User
+                </a>
+                <a href="users/create" class="list-group-item list-group-item-action">New User</a>
+                <a href="users" class="list-group-item list-group-item-action">List Users</a>
+            </div>
+            <div class="list-group mb-4">
+                <a href="#" class="list-group-item list-group-item-action active ">
+                    Activities
+                </a>
+                <a href="activities/create" class="list-group-item list-group-item-action">New Activity</a>
+                <a href="activities" class="list-group-item list-group-item-action">List Activities</a>
+            </div>
+        </div>
+    </div>
+    <!-- Code (footer) HTML -->
+
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

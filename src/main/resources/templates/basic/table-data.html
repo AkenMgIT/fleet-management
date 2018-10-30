@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{main_layout}">
+<!-- layout:decorate="~{basic/layout}"> -->
+<head> 
+    <title>Table Data</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Table Data</h1>
+    <div layout:fragment="content">
+        <table class="table table-bordered">
+            <tr>
+                <th>key</th>
+                <th>value</th>
+            </tr>
+            <tr>
+                <td>mot</td>
+                <td>hello</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>Tournante</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
