@@ -14,10 +14,6 @@ layout:decorate="~{layouts/fleet_layout}">
             <div class="card-body">
                 <form action="#" th:action="@{/cars/create}" th:object="${form}" method="post">
                     <div class="form-group">
-                        <label for="">ID</label>
-                        <input type="text" class="form-control" th:field="*{id}">
-                    </div>
-                    <div class="form-group">
                         <label for="">Brand</label>
                         <input type="text" class="form-control" th:field="*{brand}">
                     </div>

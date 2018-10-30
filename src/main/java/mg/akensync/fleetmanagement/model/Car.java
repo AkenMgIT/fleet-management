@@ -5,29 +5,47 @@
  */
 package mg.akensync.fleetmanagement.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author khemis_ratsimivony
  */
-public class Car {
+@Entity
+@Table(name = "car")
+public class Car implements Serializable {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "brand")
     private String brand;
+
+    @Column(name = "model")
     private String model;
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "creationDate")
     private Date creationDate;
 
     public Car() {
-        this.id = 0;
         this.brand = "";
         this.model = "";
         this.description = "";
         this.creationDate = new Date();
     }
 
-    public Car(int id, String brand, String model, String description) {
+    public Car(Long id, String brand, String model, String description) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -35,11 +53,11 @@ public class Car {
         this.creationDate = new Date();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

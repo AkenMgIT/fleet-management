@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import mg.akensync.fleetmanagement.mock.CarMock;
 import mg.akensync.fleetmanagement.model.Car;
+import mg.akensync.fleetmanagement.repository.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,38 +19,26 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CarService {
+    
+    @Autowired
+    CarRepository repo;
 
     public List<Car> getAll() {
-        return CarMock.cars; 
+        return repo.findAll();
     }
     
     public void save(Car car){
-        CarMock.cars.add(car);
+        repo.save(car);
     }
     
     public void update(Car entity){
-        Car result = null;
-        for(int i = 0 ; i < CarMock.cars.size() ; i++){
-            if(CarMock.cars.get(i).getId()==entity.getId()){
-               CarMock.cars.set(i, entity); 
-            }
-        }
+        repo.save(entity);
     }
     
-    public Car get(int id){
-        Car result = null;
-        for(Car car : CarMock.cars){
-            if(car.getId()==id){
-                return car;
-            }
-        }
-        return result;
+    public Car get(long id){
+        return repo.getOne(id);
     }
-    public void delete(int id){
-        for(int i = 0 ; i < CarMock.cars.size() ; i++){
-            if(CarMock.cars.get(i).getId()==id){
-               CarMock.cars.remove(i); 
-            }
-        }
+    public void delete(long id){
+        repo.deleteById(id);
     }
 }
