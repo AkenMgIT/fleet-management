@@ -5,8 +5,8 @@
  */
 package mg.akensync.fleetmanagement.controller;
 
-import mg.akensync.fleetmanagement.model.UserType;
-import mg.akensync.fleetmanagement.service.UserTypeService;
+import mg.akensync.fleetmanagement.model.AppUser;
+import mg.akensync.fleetmanagement.service.AppUserService;
 import mg.akensync.fleetmanagement.service.UserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,51 +22,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author khemis_ratsimivony
  */
 @Controller
-@RequestMapping("/user-types")
-public class UserTypeController {
+@RequestMapping("/app-users")
+public class AppUserController {
 
     @Autowired
-    UserTypeService service;
+    AppUserService service;
+
+    @Autowired
+    UserTypeService typeService;
 
     @GetMapping({"", "/"})
     public String list(Model model) {
         model.addAttribute("list", service.getAll());
-        return "user_types/list";
+        return "app_users/list";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("form", new UserType());
-        return "user_types/create";
+        model.addAttribute("form", new AppUser());
+        model.addAttribute("types", typeService.getAll());
+        return "app_users/create";
     }
 
     @PostMapping("/create")
-    public String createPost(Model model, @ModelAttribute UserType form) {
+    public String createPost(Model model, @ModelAttribute AppUser form) {
         service.save(form);
-        return "redirect:/user-types";
+        return "redirect:/app-users";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("form", service.get(id));
-        return "user_types/edit";
+        model.addAttribute("types", typeService.getAll());
+        return "app_users/edit";
     }
 
     @PostMapping("/edit")
-    public String editPost(Model model, @ModelAttribute UserType form) {
+    public String editPost(Model model, @ModelAttribute AppUser form) {
         service.update(form);
-        return "redirect:/user-types";
+        return "redirect:/app-users";
     }
 
     @GetMapping("/{id}")
     public String get(Model model, @PathVariable("id") int id) {
         model.addAttribute("item", service.get(id));
-        return "user_types/details";
+        return "app_users/details";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(Model model, @PathVariable("id") int id) {
         service.delete(id);
-        return "redirect:/user-types";
+        return "redirect:/app-users";
     }
 }

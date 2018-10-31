@@ -9,6 +9,10 @@
     - with selected driver
 
 ## To Do:
-- rename object to "item" / object list to "list" in:
-    - cars
+- rename object to "item" / object list to "list" in following views:
+    - cars 
     - brands 
+- rename object to "entity" in following classes:
+    - cars service
+    - brands service
+- 

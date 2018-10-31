@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/fleet_layout}">
+<head> 
+    <title>User</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div layout:fragment="page_content">
+        <div class="card">
+            <div class="card-header">User Details: 
+            </div>
+            <table class="table table-bordered mb-0" >
+                <tr>
+                    <td>ID</td>
+                    <td th:text="${item.id}">01</td>
+                </tr>
+                <tr>
+                    <td>Short Name</td>
+                    <td th:text="${item.shortName}">01</td>
+                </tr>
+                <tr>
+                    <td>User Type</td>
+                    <td th:text="${item?.userType?.title}">01</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td th:text="${#dates.format(item.creationDate, 'dd-MM-yyyy hh:mm')}">01</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/fleet_layout}">
+
+<head>
+    <title>Create User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <div layout:fragment="page_content">
+        <div class="card">
+            <div class="card-header">User Form</div>
+            <div class="card-body">
+                <form action="#" th:action="@{/app-users/create}" th:object="${form}" method="post">
+                    <div class="form-group">
+                        <label for="">Short Name</label>
+                        <input type="text" class="form-control" th:field="*{shortName}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">User Types</label>
+                        <select class="form-control" th:field="*{userType}">
+                            <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.title}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Creation Date</label>
+                        <input type="text" class="form-control" th:field="*{creationDate}">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="form-control btn btn-primary" value="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
