@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author khemis_ratsimivony
  */
 @Controller
+@RequestMapping("/test")
 public class TestController {
     
     @Autowired
@@ -27,8 +28,8 @@ public class TestController {
     CarService carService;
 
     
-    @RequestMapping("/test")
-    public String test(Model model) {
+    @RequestMapping("/insert-data")
+    public String insertData(Model model) {
         brandService.save(new CarBrand("BMW", "random description"));
         brandService.save(new CarBrand("Audi", "random description"));
         

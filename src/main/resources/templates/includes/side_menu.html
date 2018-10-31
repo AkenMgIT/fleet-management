@@ -47,37 +47,19 @@
                 <a href="" th:href="@{/}" class="list-group-item list-group-item-action">Home</a>
             </div>
             <div class="list-group mb-4">
-                <a href="#" class="list-group-item list-group-item-action active ">
-                    Cars
+                <a href="#" th:href="@{/}" class="list-group-item list-group-item-action active ">
+                    Artefacts
                 </a>
-                <a href="cars/create" th:href="@{/cars/create}" class="list-group-item list-group-item-action">New Car</a>
-                <a href="cars" th:href="@{/cars}" class="list-group-item list-group-item-action">List Cars</a>
+                <a th:href="@{/cars}" class="list-group-item list-group-item-action">Cars</a>
+                <a th:href="@{/cars}" class="list-group-item list-group-item-action">Users</a>
+                <a th:href="@{/cars}" class="list-group-item list-group-item-action">Activities</a>
             </div>
             <div class="list-group mb-4">
-                <a href="#" class="list-group-item list-group-item-action active ">
-                    Brands
-                </a>
-                <a href="cars/create" th:href="@{/carBrands/create}" class="list-group-item list-group-item-action">New brand</a>
-                <a href="cars" th:href="@{/carBrands}" class="list-group-item list-group-item-action">List Brands</a>
-            </div>
-            <div class="list-group mb-4">
-                <a href="#" class="list-group-item list-group-item-action active ">
-                    User
-                </a>
-                <a href="users/create" class="list-group-item list-group-item-action">New User</a>
-                <a href="users" class="list-group-item list-group-item-action">List Users</a>
-            </div>
-            <div class="list-group mb-4">
-                <a href="#" class="list-group-item list-group-item-action active ">
-                    Activities
-                </a>
-                <a href="activities/create" class="list-group-item list-group-item-action">New Activity</a>
-                <a href="activities" class="list-group-item list-group-item-action">List Activities</a>
-            </div>
-            <div class="list-group mb-4">
-                <a href="#" th:href="@{/test}" class="list-group-item list-group-item-action active ">
+                <a href="#" th:href="@{/}" class="list-group-item list-group-item-action active ">
                     Test
                 </a>
+                <a th:href="@{/test/insert-data}" class="list-group-item list-group-item-action">Insert Data</a>
+                <a th:href="@{/user-types}" class="list-group-item list-group-item-action">User types</a>
             </div>
         </div>
     </div>

@@ -9,6 +9,11 @@ layout:decorate="~{layouts/fleet_layout}">
 </head>
 <body>
     <div layout:fragment="page_content">
+        <div class="card mb-4">
+            <div class="card-body">
+                <a href="" th:href="@{/carBrands}" class="btn btn-primary"> Brands </a>
+            </div>
+        </div>
         <div class="card">
             <div class="card-header">Cars List: 
                 <span th:text="${#lists.size(cars)}" class="float-right">cars number</span>
@@ -41,6 +46,9 @@ layout:decorate="~{layouts/fleet_layout}">
             </div>
             <div class="card-body text-center" th:if="${cars.empty}">
                 Empty
+            </div>
+            <div class="card-footer">
+                    <a href="" th:href="@{/cars/create}" class="btn btn-primary"> Create Car </a>
             </div>
         </div>
     </div>

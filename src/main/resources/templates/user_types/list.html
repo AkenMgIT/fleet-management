@@ -4,39 +4,39 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layouts/fleet_layout}">
 <head> 
-    <title>Brands</title> 
+    <title>User Types</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <div layout:fragment="page_content">
         <div class="card mb-4">
                 <div class="card-body">
-                    <a href="" th:href="@{/cars}" class="btn btn-primary"> Cars </a>
+                    <a href="" th:href="@{/users}" class="btn btn-primary"> Users </a>
                 </div>
             </div>
         <div class="card">
-            <div class="card-header">Brands List: 
-                <span th:text="${#lists.size(list)}" class="float-right">carBrands number</span>
+            <div class="card-header">User Types List: 
+                <span th:text="${#lists.size(list)}" class="float-right">User Types number</span>
             </div>
             <div th:if="${!list.empty}">
                 <table class="table mb-0">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Brand</th>
-                            <th>date</th>
+                            <th>Title</th>
+                            <th>creation date</th>
                             <th class="text-right">action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="brand : ${list}">
-                            <td th:text="${brand.id}">0</td>
-                            <td th:text="${brand.title}">M3</td>
-                            <td th:text="${#dates.format(brand.creationDate, 'dd-MM-yyyy hh:mm')}">2008</td>
+                        <tr th:each="item : ${list}">
+                            <td th:text="${item.id}">0</td>
+                            <td th:text="${item.title}">short name</td>
+                            <td th:text="${#dates.format(item.creationDate, 'dd-MM-yyyy hh:mm')}">2008</td>
                             <td class="text-right">
-                                <a href="" th:href="@{/carBrands/{id}(id=${brand.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
-                                <a href="" th:href="@{/carBrands/edit/{id}(id=${brand.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <a href="" th:href="@{/carBrands/delete/{id}(id=${brand.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href="" th:href="@{/user-types/{id}(id=${item.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
+                                <a href="" th:href="@{/user-types/edit/{id}(id=${item.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a href="" th:href="@{/user-types/delete/{id}(id=${item.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -46,7 +46,7 @@ layout:decorate="~{layouts/fleet_layout}">
                 Empty
             </div>
             <div class="card-footer">
-                    <a href="" th:href="@{/carBrands/create}" class="btn btn-primary"> Create Brand </a>
+                    <a href="" th:href="@{/user-types/create}" class="btn btn-primary"> Create User Type </a>
             </div>
         </div>
     </div>
