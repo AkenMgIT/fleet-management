@@ -5,16 +5,13 @@
  */
 package mg.akensync.fleetmanagement.repository;
 
-import java.util.List;
-import mg.akensync.fleetmanagement.model.Car;
+import mg.akensync.fleetmanagement.model.CarBrand;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author khemis_ratsimivony
  */
-
-public interface CarRepository extends JpaRepository<Car,Long> {
-    public List<Car> findAllByOrderByCreationDateAsc();
-    public List<Car> findAllByOrderByCreationDateDesc();
+public interface CarBrandRepository extends JpaRepository<CarBrand,Long>{
+    
 }

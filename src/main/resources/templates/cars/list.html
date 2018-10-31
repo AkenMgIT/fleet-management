@@ -13,30 +13,35 @@ layout:decorate="~{layouts/fleet_layout}">
             <div class="card-header">Cars List: 
                 <span th:text="${#lists.size(cars)}" class="float-right">cars number</span>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>model</th>
-                        <th>marque</th>
-                        <th>date</th>
-                        <th class="text-right">action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="car : ${cars}">
-                        <td th:text="${car.id}">0</td>
-                        <td th:text="${car.brand}">BMW</td>
-                        <td th:text="${car.model}">M3</td>
-                        <td th:text="${#dates.format(car.creationDate, 'dd MMM yyyy')}">2008</td>
-                        <td class="text-right">
-                            <a href="" th:href="@{/cars/{id}(id=${car.id})}" class="btn btn-info">details</a>
-                            <a href="" th:href="@{/cars/{id}/edit(id=${car.id})}" class="btn btn-warning">edit</a>
-                            <a href="" th:href="@{/cars/{id}/delete(id=${car.id})}" class="btn btn-danger">delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div th:if="${!cars.empty}">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Model</th>
+                            <th>Brand</th>
+                            <th>date</th>
+                            <th class="text-right">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="car : ${cars}">
+                            <td th:text="${car.id}">id</td>
+                            <td th:text="${car.model}">model</td>
+                            <td th:text="${car?.carBrand?.title}">brand</td>
+                            <td th:text="${#dates.format(car.creationDate, 'dd-MM-yyyy hh:mm')}">2008</td>
+                            <td class="text-right">
+                                <a href="" th:href="@{/cars/{id}(id=${car.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
+                                <a href="" th:href="@{/cars/edit/{id}(id=${car.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a href="" th:href="@{/cars/delete/{id}(id=${car.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body text-center" th:if="${cars.empty}">
+                Empty
+            </div>
         </div>
     </div>
 </body>

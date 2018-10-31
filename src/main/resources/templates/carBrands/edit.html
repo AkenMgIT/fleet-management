@@ -1,31 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layouts/fleet_layout}">
-<head> 
-    <title>Edit Car</title> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/fleet_layout}">
+
+<head>
+    <title>Edit Brand</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+
 <body>
     <div layout:fragment="page_content">
         <div class="card">
-            <div class="card-header">Car Form</div>
+            <div class="card-header">Brand Form</div>
             <div class="card-body">
-                <form action="#" th:action="@{/cars/edit}" th:object="${form}" method="post">
+                <form action="#" th:action="@{/carBrands/edit}" th:object="${form}" method="post">
+                    <div class="form-group">
+                        <label for="">Brand</label>
+                        <input type="text" class="form-control" th:field="*{title}">
+                    </div>
                     <div class="form-group">
                         <label for="">ID</label>
                         <input type="text" class="form-control" th:field="*{id}">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Model</label>
-                        <input type="text" class="form-control" th:field="*{model}">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Brand</label>
-                        <select class="form-control" th:field="*{carBrand}">
-                            <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.title}"></option>
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Description</label>
@@ -43,4 +37,5 @@ layout:decorate="~{layouts/fleet_layout}">
         </div>
     </div>
 </body>
+
 </html>

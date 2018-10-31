@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/fleet_layout}">
+<head> 
+    <title>Brands</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div layout:fragment="page_content">
+        <div class="card">
+            <div class="card-header">Brands List: 
+                <span th:text="${#lists.size(list)}" class="float-right">carBrands number</span>
+            </div>
+            <div th:if="${!list.empty}">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Brand</th>
+                            <th>date</th>
+                            <th class="text-right">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="brand : ${list}">
+                            <td th:text="${brand.id}">0</td>
+                            <td th:text="${brand.title}">M3</td>
+                            <td th:text="${#dates.format(brand.creationDate, 'dd-MM-yyyy hh:mm')}">2008</td>
+                            <td class="text-right">
+                                <a href="" th:href="@{/carBrands/{id}(id=${brand.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
+                                <a href="" th:href="@{/carBrands/edit/{id}(id=${brand.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a href="" th:href="@{/carBrands/delete/{id}(id=${brand.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body text-center" th:if="${list.empty}">
+                Empty
+            </div>
+        </div>
+    </div>
+</body>
+</html>

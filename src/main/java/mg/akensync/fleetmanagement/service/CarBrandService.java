@@ -5,11 +5,9 @@
  */
 package mg.akensync.fleetmanagement.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import mg.akensync.fleetmanagement.mock.CarMock;
-import mg.akensync.fleetmanagement.model.Car;
-import mg.akensync.fleetmanagement.repository.CarRepository;
+import mg.akensync.fleetmanagement.model.CarBrand;
+import mg.akensync.fleetmanagement.repository.CarBrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,27 +16,28 @@ import org.springframework.stereotype.Service;
  * @author khemis_ratsimivony
  */
 @Service
-public class CarService {
-    
-    @Autowired
-    CarRepository repo;
+public class CarBrandService {
 
-    public List<Car> getAll() {
-        return repo.findAllByOrderByCreationDateDesc();
+    @Autowired
+    CarBrandRepository repo;
+
+    public List<CarBrand> getAll() {
+        return repo.findAll();
     }
-    
-    public void save(Car car){
+
+    public void save(CarBrand car) {
         repo.save(car);
     }
-    
-    public void update(Car entity){
+
+    public void update(CarBrand entity) {
         repo.save(entity);
     }
-    
-    public Car get(long id){
+
+    public CarBrand get(long id) {
         return repo.getOne(id);
     }
-    public void delete(long id){
+
+    public void delete(long id) {
         repo.deleteById(id);
     }
 }

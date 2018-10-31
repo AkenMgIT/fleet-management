@@ -4,30 +4,30 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layouts/fleet_layout}">
 <head> 
-    <title>Cars</title> 
+    <title>Brand</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <div layout:fragment="page_content">
         <div class="card">
-            <div class="card-header">Car Details: 
+            <div class="card-header">Brand Details: 
             </div>
             <table class="table table-bordered mb-0" >
                 <tr>
                     <td>ID</td>
-                    <td th:text="${car.id}">01</td>
+                    <td th:text="${brand.id}">01</td>
                 </tr>
                 <tr>
-                    <td>Model</td>
-                    <td th:text="${car.model}">01</td>
+                    <td>Brand</td>
+                    <td th:text="${brand.title}">01</td>
                 </tr>
                 <tr>
-                    <td>Marque</td>
-                    <td th:text="${car?.carBrand?.title}">01</td>
+                    <td>Description</td>
+                    <td th:text="${brand.description}">01</td>
                 </tr>
                 <tr>
                     <td>Date</td>
-                    <td th:text="${#dates.format(car.creationDate, 'dd-MM-yyyy hh:mm')}">01</td>
+                    <td th:text="${#dates.format(brand.creationDate, 'dd MMM yyyy - hh:mm')}">01</td>
                 </tr>
             </table>
         </div>

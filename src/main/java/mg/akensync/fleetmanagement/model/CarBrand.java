@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,19 +20,16 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author khemis_ratsimivony
  */
 @Entity
-@Table(name = "car")
-public class Car implements Serializable {
+@Table(name = "car_brand")
+public class CarBrand implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(optional = true)
-    private CarBrand carBrand;
-
-    @Column(name = "model")
-    private String model;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "description")
     private String description;
@@ -42,16 +37,15 @@ public class Car implements Serializable {
     @Column(name = "creationDate")
     @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
     private Date creationDate;
-    
-    public Car() {
-        this.model = "";
-        this.description = "";
+
+    public CarBrand() {
         this.creationDate = new Date();
     }
 
-    public Car(String model, String description) {
-        this.model = model;
+    public CarBrand(String title, String description) {
+        this.title = title;
         this.description = description;
+        this.creationDate = new Date();
     }
 
     public Long getId() {
@@ -62,12 +56,12 @@ public class Car implements Serializable {
         this.id = id;
     }
 
-    public String getModel() {
-        return model;
+    public String getTitle() {
+        return title;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -86,18 +80,9 @@ public class Car implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public CarBrand getCarBrand() {
-        return carBrand;
-    }
-
-    public void setCarBrand(CarBrand carBrand) {
-        this.carBrand = carBrand;
-    }
-
     @Override
     public String toString() {
-        return "Car{" + "id=" + id + ", carBrand=" + carBrand.getTitle() + ", model=" + model + ", description=" + description + ", creationDate=" + creationDate + '}';
+        return "CarBrand{" + "id=" + id + ", title=" + title + ", description=" + description + ", creationDate=" + creationDate + '}';
     }
-
     
 }

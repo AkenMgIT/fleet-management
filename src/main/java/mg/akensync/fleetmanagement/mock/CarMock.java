@@ -16,8 +16,8 @@ import mg.akensync.fleetmanagement.model.Car;
 public class CarMock {
     public static List<Car> cars = new ArrayList<>();
     static {
-        cars.add(new Car(new Long(1), "bmw", "m3", ""));
-        cars.add(new Car(new Long(2), "audi", "a3", ""));
-        cars.add(new Car(new Long(3), "volks", "polo", ""));
+//        cars.add(new Car(new Long(1), "m3", ""));
+//        cars.add(new Car(new Long(2), "a3", ""));
+//        cars.add(new Car(new Long(3), "polo", ""));
     }
 }
