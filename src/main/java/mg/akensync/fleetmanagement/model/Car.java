@@ -39,20 +39,27 @@ public class Car implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "creationDate")
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
+    @Column(name = "creation_date")
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date creationDate;
     
     public Car() {
-        this.model = "";
-        this.description = "";
         this.creationDate = new Date();
     }
 
     public Car(String model, String description) {
+        this();
         this.model = model;
         this.description = description;
     }
+
+    public Car(String model, CarBrand carBrand) {
+        this();
+        this.carBrand = carBrand;
+        this.model = model;
+    }
+    
+    
 
     public Long getId() {
         return id;

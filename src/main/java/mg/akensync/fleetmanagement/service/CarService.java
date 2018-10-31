@@ -19,26 +19,31 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CarService {
-    
+
     @Autowired
     CarRepository repo;
 
     public List<Car> getAll() {
         return repo.findAllByOrderByCreationDateDesc();
     }
-    
-    public void save(Car car){
+
+    public void save(Car car) {
         repo.save(car);
     }
-    
-    public void update(Car entity){
+
+    public void update(Car entity) {
         repo.save(entity);
     }
-    
-    public Car get(long id){
+
+    public Car get(long id) {
         return repo.getOne(id);
     }
-    public void delete(long id){
+
+    public void delete(long id) {
         repo.deleteById(id);
+    }
+
+    public Car findOneByModel(String model) {
+        return repo.findOneByModel(model);
     }
 }

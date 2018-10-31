@@ -5,15 +5,13 @@
  */
 package mg.akensync.fleetmanagement.repository;
 
-import java.util.List;
-import mg.akensync.fleetmanagement.model.AppUser;
+import mg.akensync.fleetmanagement.model.CarActivity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author khemis_ratsimivony
  */
-public interface AppUserRepository extends JpaRepository<AppUser,Long>{
-    public List<AppUser> findAllByUserTypeTitle(String title);
-    public AppUser findOneByShortName(String shortName);
+public interface CarActivityRepository extends JpaRepository<CarActivity,Long>{
+    
 }

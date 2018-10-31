@@ -17,4 +17,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CarRepository extends JpaRepository<Car,Long> {
     public List<Car> findAllByOrderByCreationDateAsc();
     public List<Car> findAllByOrderByCreationDateDesc();
+    public Car findOneByModel(String model);
 }

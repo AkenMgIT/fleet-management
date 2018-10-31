@@ -6,8 +6,8 @@
 package mg.akensync.fleetmanagement.service;
 
 import java.util.List;
-import mg.akensync.fleetmanagement.model.UserType;
-import mg.akensync.fleetmanagement.repository.UserTypeRepository;
+import mg.akensync.fleetmanagement.model.CarActivity;
+import mg.akensync.fleetmanagement.repository.CarActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,32 +16,28 @@ import org.springframework.stereotype.Service;
  * @author khemis_ratsimivony
  */
 @Service
-public class UserTypeService {
+public class CarActivityService {
 
     @Autowired
-    UserTypeRepository repo;
+    CarActivityRepository repo;
 
-    public List<UserType> getAll() {
+    public List<CarActivity> getAll() {
         return repo.findAll();
     }
 
-    public void save(UserType entity) {
+    public void save(CarActivity entity) {
         repo.save(entity);
     }
 
-    public void update(UserType entity) {
+    public void update(CarActivity entity) {
         repo.save(entity);
     }
 
-    public UserType get(long id) {
+    public CarActivity get(long id) {
         return repo.getOne(id);
     }
 
     public void delete(long id) {
         repo.deleteById(id);
-    }
-
-    public UserType findOneByTitle(String title) {
-        return repo.findOneByTitle(title);
     }
 }

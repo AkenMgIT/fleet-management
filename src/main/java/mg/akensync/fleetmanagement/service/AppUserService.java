@@ -39,4 +39,12 @@ public class AppUserService {
     public void delete(long id) {
         repo.deleteById(id);
     }
+    
+    public List<AppUser> findByuserType(String type){
+        return repo.findAllByUserTypeTitle(type);
+    }
+    
+    public AppUser findOneByShortName(String shortName) {
+        return repo.findOneByShortName(shortName);
+    }
 }

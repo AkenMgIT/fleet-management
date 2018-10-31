@@ -32,7 +32,7 @@ layout:decorate="~{layouts/fleet_layout}">
                         <tr th:each="brand : ${list}">
                             <td th:text="${brand.id}">0</td>
                             <td th:text="${brand.title}">M3</td>
-                            <td th:text="${#dates.format(brand.creationDate, 'dd-MM-yyyy hh:mm')}">2008</td>
+                            <td th:text="${#dates.format(brand.creationDate, 'dd-MM-yyyy HH:mm')}">2008</td>
                             <td class="text-right">
                                 <a href="" th:href="@{/carBrands/{id}(id=${brand.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
                                 <a href="" th:href="@{/carBrands/edit/{id}(id=${brand.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>

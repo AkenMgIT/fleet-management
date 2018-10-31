@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/fleet_layout}">
+<head> 
+    <title>Car Activitie</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div layout:fragment="page_content">
+        <div class="card">
+            <div class="card-header">Car Activitie List: 
+                <span th:text="${#lists.size(list)}" class="float-right">Car Activities number</span>
+            </div>
+            <div th:if="${!list.empty}">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>description</th>
+                            <th>Car</th>
+                            <th>Start date</th>
+                            <th class="text-right">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${list}">
+                            <td th:text="${item.id}">0</td>
+                            <td th:text="${item.description}">short name</td>
+                            <td th:text="${item?.car?.model}">short name</td>
+                            <td th:text="${#dates.format(item.startDate, 'dd-MM-yyyy HH:mm')}">2008</td>
+                            <td class="text-right">
+                                <a href="" th:href="@{/car-activities/{id}(id=${item.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
+                                <a href="" th:href="@{/car-activities/edit/{id}(id=${item.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a href="" th:href="@{/car-activities/delete/{id}(id=${item.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body text-center" th:if="${list.empty}">
+                Empty
+            </div>
+            <div class="card-footer">
+                    <a href="" th:href="@{/car-activities/create}" class="btn btn-primary"> Create Car Activity </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

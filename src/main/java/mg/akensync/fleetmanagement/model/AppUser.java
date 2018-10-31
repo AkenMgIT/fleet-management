@@ -5,6 +5,7 @@
  */
 package mg.akensync.fleetmanagement.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "app_user")
-public class AppUser {
+public class AppUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +35,8 @@ public class AppUser {
     @ManyToOne(optional = true)
     private UserType userType;
 
-    @Column(name = "creationDate")
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
+    @Column(name = "creation_date")
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date creationDate;
 
     public AppUser() {
@@ -43,8 +44,14 @@ public class AppUser {
     }
 
     public AppUser(String shortName) {
+        this();
         this.shortName = shortName;
-        this.creationDate = new Date();
+    }
+
+    public AppUser(String shortName, UserType userType) {
+        this();
+        this.shortName = shortName;
+        this.userType = userType;
     }
 
     public Long getId() {
@@ -84,5 +91,4 @@ public class AppUser {
         return "AppUser{" + "id=" + id + ", shortName=" + shortName + ", useType=" + userType.getTitle() + ", creationDate=" + creationDate + '}';
     }
 
-    
 }

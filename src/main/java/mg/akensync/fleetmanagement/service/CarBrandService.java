@@ -40,4 +40,8 @@ public class CarBrandService {
     public void delete(long id) {
         repo.deleteById(id);
     }
+    
+    public CarBrand findOneByTitle(String title) {
+        return repo.findOneByTitle(title);
+    }
 }

@@ -34,8 +34,8 @@ public class UserType implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "creationDate")
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
+    @Column(name = "creation_date")
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date creationDate;
 
     public UserType() {

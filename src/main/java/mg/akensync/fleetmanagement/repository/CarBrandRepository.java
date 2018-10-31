@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author khemis_ratsimivony
  */
 public interface CarBrandRepository extends JpaRepository<CarBrand,Long>{
-    
+    public CarBrand findOneByTitle(String title);
 }
