@@ -22,6 +22,11 @@ public class PageController {
         return "pages/home"; 
     }
     
+    @GetMapping("schedule-calendar")
+    public String scheduleCalendar(Model model) {
+        return "pages/schedule_calendar"; 
+    }
+    
 //    @RequestMapping("/greeting")
 //    public String greeting(Model model) {
 //        return "basic/greeting";

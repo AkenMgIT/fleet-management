@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="resources/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="resources/static/css/custom.css" th:href="@{/css/custom.css}" />
+    <link rel="stylesheet" href="resources/static/css/fullcalendar.css" th:href="@{/css/fullcalendar.css}" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <title layout:title-pattern="$CONTENT_TITLE">Fleet Management</title>
+    <!-- <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Fleet Management</title> -->
+</head>
+
+<body>
+    <div th:replace="includes/nav_menu :: nav_menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Fleet Management</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Code (header) HTML -->
+    <div class="container">
+        <div layout:fragment="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+            Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+            Phasellus et placerat elit.
+        </div>
+    </div>
+    <!-- Code (footer) HTML -->
+
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/moment.min.js}"></script>
+    <script th:src="@{/js/fullcalendar.js}"></script>
+    <script>
+        $(function () {
+            // page is now ready, initialize the calendar...
+            $('#calendar').fullCalendar({
+                header: {
+                    left:   'title',
+                    center: '',
+                    right:  'month,agendaWeek,listWeek,basicWeek today prev,next'// buttons for switching between views
+                }, 
+                themeSystem: 'bootstrap4',    
+                defaultView: 'agendaWeek',
+                /*events: [
+                    {
+                    title: 'Event Title1',
+                    start: '2018-11-03T13:00:00',
+                    end: '2018-11-03T15:00:00',
+                    description: 'second description',
+                    driver: 'forsa',
+                    owner: 'medine'
+                    },
+                    {
+                    title: 'Event Title2',
+                    start: '2018-11-03T09:00:00',
+                    end: '2018-11-03T11:30:00',
+                    description: 'second description',
+                    driver: 'forsa',
+                    owner: 'medine'
+                    }
+                ],*/
+                eventSources: [
+                    // your event source
+                    {
+                    url: 'http://localhost:8080/fleetmanagement/rest/schedules', // use the `url` property
+                    color: '#007bff',    // an option!
+                    textColor: 'white'  // an option!
+                    }
+
+                    // any other sources...
+
+                ],
+                eventClick: function(calEvent, jsEvent, view) {
+
+                    alert('Event: ' + calEvent.title);
+                
+                  },
+                eventRender: function(event, element) { 
+                    element.find('.fc-title').append("<br/>" + event.description); 
+                    element.find('.fc-title').append("<br/>" + event.driver); 
+                    element.find('.fc-title').append("<br/>" + event.owner); 
+                },
+                eventLimitClick: "popover",
+                // put your options and callbacks here
+            })
+
+            // a convenient utility for getting the calendar object.
+            // you can call methods on the calendar object directly.
+            /*
+            var calendar = $('#calendar').fullCalendar('getCalendar');
+
+            calendar.on('dayClick', function(date, jsEvent, view) {
+            console.log('clicked on ' + date.format());
+            });
+            */
+        });
+    </script>
+</body>
+
+</html>

@@ -14,9 +14,11 @@
 - User can see car: activities [ok]
 - User can see user(Owner): activities [ok]
 - User can see user(Driver): activities [ok]
-- User can see Calendar of activities by week
-    - send JSON to javascript 
-    - http://docs.dhtmlx.com/scheduler/
+- User can see Calendar of activities by:
+    - week [ok]
+    - driver 
+    - owner 
+    - car 
 
 ## Bugs:
 - rename object to "item" / object list to "list" in following views:

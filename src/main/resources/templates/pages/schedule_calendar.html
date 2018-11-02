@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/calendar_layout}">
+<head> 
+    <!-- <title>App Layout</title>  -->
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Fleet Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Schedule Calendar</h1>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

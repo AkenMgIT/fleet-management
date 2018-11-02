@@ -5,8 +5,10 @@
  */
 package mg.akensync.fleetmanagement.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import mg.akensync.fleetmanagement.model.AppUser;
+import mg.akensync.fleetmanagement.model.CalendarEvent;
 import mg.akensync.fleetmanagement.model.Car;
 import mg.akensync.fleetmanagement.model.CarSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,14 @@ public class CarScheduleService {
 
     public List<CarSchedule> getAll() {
         return repo.findAll();
+    }
+    
+    public List<CalendarEvent> getAllCalendarEvents() {
+        List<CalendarEvent> result = new ArrayList<>();
+        for(CarSchedule cs: repo.findAll()){
+            result.add(new CalendarEvent(cs));
+        }
+        return result;
     }
 
     public List<CarSchedule> getByCar(Car car) {
