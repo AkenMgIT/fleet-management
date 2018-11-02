@@ -71,6 +71,15 @@ public class CarSchedule implements Serializable {
         this.driver = driver;
         this.owner = owner;
     }
+
+    public CarSchedule(String description, Date startDate, Date endDate) {
+        this();
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    
+    
     
     public Long getId() {
         return id;

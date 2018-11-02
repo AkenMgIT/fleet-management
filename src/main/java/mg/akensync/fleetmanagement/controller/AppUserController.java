@@ -5,8 +5,12 @@
  */
 package mg.akensync.fleetmanagement.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import mg.akensync.fleetmanagement.model.AppUser;
+import mg.akensync.fleetmanagement.model.CarSchedule;
 import mg.akensync.fleetmanagement.service.AppUserService;
+import mg.akensync.fleetmanagement.service.CarScheduleService;
 import mg.akensync.fleetmanagement.service.UserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +34,9 @@ public class AppUserController {
 
     @Autowired
     UserTypeService typeService;
+    
+    @Autowired
+    CarScheduleService scheduleService;
 
     @GetMapping({"", "/"})
     public String list(Model model) {
@@ -65,7 +72,18 @@ public class AppUserController {
 
     @GetMapping("/{id}")
     public String get(Model model, @PathVariable("id") int id) {
-        model.addAttribute("item", service.get(id));
+        AppUser item = service.get(id);
+        model.addAttribute("item", item);
+        System.out.println("user is a : " + item.getUserType().getTitle());
+        List<CarSchedule> schedules = new ArrayList<>() ;
+        if(item.getUserType().getTitle().equals("Driver") ){
+            System.out.println("is a driver");
+            schedules = scheduleService.getByDriver(item);
+        }else if(item.getUserType().getTitle().equals("Owner") ){
+            System.out.println("is an owner");
+            schedules = scheduleService.getByOwner(item);
+        }
+        model.addAttribute("list", schedules);
         return "app_users/details";
     }
 

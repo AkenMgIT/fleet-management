@@ -6,6 +6,8 @@
 package mg.akensync.fleetmanagement.service;
 
 import java.util.List;
+import mg.akensync.fleetmanagement.model.AppUser;
+import mg.akensync.fleetmanagement.model.Car;
 import mg.akensync.fleetmanagement.model.CarSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,18 @@ public class CarScheduleService {
         return repo.findAll();
     }
 
+    public List<CarSchedule> getByCar(Car car) {
+        return repo.findAllByCar(car);
+    }
+
+    public List<CarSchedule> getByDriver(AppUser driver) {
+        return repo.findAllByDriver(driver);
+    }
+
+    public List<CarSchedule> getByOwner(AppUser owner) {
+        return repo.findAllByOwner(owner);
+    }
+
     public void save(CarSchedule entity) {
         repo.save(entity);
     }
@@ -40,4 +54,5 @@ public class CarScheduleService {
     public void delete(long id) {
         repo.deleteById(id);
     }
+
 }

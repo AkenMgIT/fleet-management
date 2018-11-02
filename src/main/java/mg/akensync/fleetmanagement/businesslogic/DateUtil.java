@@ -16,30 +16,68 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DateUtil {
-    
-    public boolean isDateBetween(Date target, Date start, Date end){
-        if(!target.before(start) && !target.after(end)){
+
+    public boolean isDateBetween(Date target, Date start, Date end) {
+//        System.out.println("===================");
+//        System.out.println("Target: "+target);
+//        System.out.println("start: "+start);
+//        System.out.println("end: "+end);
+//        if(!target.before(start) && !target.after(end)){
+//            System.out.println("is between: return true\n");
+//            return true;
+//        }
+        if (target.after(start) && target.before(end)) {
+//            System.out.println("is between: return true\n");
             return true;
         }
-        return false; 
+//        System.out.println("is not between: return false\n ");
+        return false;
     }
-    
-    public boolean isScheduleAvailable(CarSchedule newSchedule, CarSchedule existingSchedule){
-        if(this.isDateBetween(
-                    newSchedule.getStartDate(), 
-                    existingSchedule.getStartDate(),
-                    existingSchedule.getEndDate()) 
-            ){
-            return false;
+
+    public boolean isScheduleAvailable(CarSchedule a, CarSchedule b) {
+        // CASE 01:
+        if(a.getStartDate().before(b.getStartDate())){
+            if(a.getEndDate().before(b.getStartDate())){
+                return true;
+            }
         }
-        if(this.isDateBetween(
-                    newSchedule.getEndDate(), 
-                    existingSchedule.getStartDate(),
-                    existingSchedule.getEndDate()) 
-            ){
-            return false;
+        // CASE 02:
+        if(a.getStartDate().before(b.getStartDate())){
+            if( !a.getEndDate().after(b.getStartDate()) ){
+                return true;
+            }
+        }
+        // CASE 05:
+        if(!a.getStartDate().before(b.getEndDate())){
+            if(a.getEndDate().after(b.getEndDate()) ){
+                return true;
+            }
+        }
+        return false;
+    }
+//    public boolean isScheduleAvailable(CarSchedule newSchedule, CarSchedule existingSchedule) {
+//        if (this.isDateBetween(
+//                newSchedule.getStartDate(),
+//                existingSchedule.getStartDate(),
+//                existingSchedule.getEndDate())) {
+//            return false;
+//        }
+//        if (this.isDateBetween(
+//                newSchedule.getEndDate(),
+//                existingSchedule.getStartDate(),
+//                existingSchedule.getEndDate())) {
+//            return false;
+//        }
+//        return true;
+//    }
+    
+    public boolean isScheduleAvailable(CarSchedule a, List<CarSchedule> list){
+        for(CarSchedule b : list){
+            if( !isScheduleAvailable(a,b) ){
+                return false;
+            }
         }
         return true;
     }
-    
+
 }

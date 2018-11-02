@@ -7,6 +7,7 @@ package mg.akensync.fleetmanagement.controller;
 
 import mg.akensync.fleetmanagement.model.Car;
 import mg.akensync.fleetmanagement.service.CarBrandService;
+import mg.akensync.fleetmanagement.service.CarScheduleService;
 import mg.akensync.fleetmanagement.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +28,12 @@ public class CarController {
 
     @Autowired
     CarService service;
-    
+
     @Autowired
     CarBrandService brandService;
+
+    @Autowired
+    CarScheduleService scheduleService;
 
     @GetMapping({"", "/"})
     public String cars(Model model) {
@@ -40,7 +44,7 @@ public class CarController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("form", new Car());
-        model.addAttribute("brands",brandService.getAll());
+        model.addAttribute("brands", brandService.getAll());
         return "cars/create";
     }
 
@@ -54,7 +58,7 @@ public class CarController {
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("form", service.get(id));
-        model.addAttribute("brands",brandService.getAll());
+        model.addAttribute("brands", brandService.getAll());
         return "cars/edit";
     }
 
@@ -68,7 +72,9 @@ public class CarController {
 
     @GetMapping("/{id}")
     public String get(Model model, @PathVariable("id") int id) {
-        model.addAttribute("car", service.get(id));
+        Car item = service.get(id);
+        model.addAttribute("car", item);
+        model.addAttribute("list", scheduleService.getByCar(item));
         return "cars/details";
     }
 
