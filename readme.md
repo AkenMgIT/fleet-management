@@ -27,6 +27,7 @@
 - rename object to "entity" in following classes:
     - cars service
     - brands service
+- Wrong format from Database date to Calendar date because of @JsonFormat 
 
 ## Algorithme:
 <pre>
