@@ -8,8 +8,10 @@
 - User can add Activity [ok]
     - with selected car [ok]
     - with selected driver [ok]
-    - calculate disponibility from car and driver
-- User can see car: activities
+    - calculate disponibility from:
+        - car
+        - driver
+- User can see car: activities [ok]
 - User can see user(Owner): activities
 - User can see user(Driver): activities
 - User can see Calendar of activities by week
