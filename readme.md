@@ -24,12 +24,51 @@
     - cars service
     - brands service
 
-## Algorithm:
-check_availablity(newEvent, eventsList){
-    # eventsList already filtered by the start day of new event/vehicule/driver
-    for(event : eventsList){
-        if(newEvent.start < event.start 
-        && newEvent.end)
-    }
-    return true;
-}
+## Algorithme:
+<pre>
+case 01:
+    schedule target:
+        - start: 08:00
+        - end: 08:30
+    schedule existant:
+        - start: 09:00
+        - end: 10:00
+    resultat:
+        - [valid] 
+case 02:
+    schedule target:
+        - start: 08:00
+        - end: 09:00
+    schedule existant:
+        - start: 09:00
+        - end: 10:00
+    resultat:
+        - [valid] car la fin de (A) est egale au debut de (B)
+case 03:
+    schedule target:
+        - start: 09:00
+        - end: 09:30
+    schedule existant:
+        - start: 09:00
+        - end: 10:00
+    resultat:
+        - [invalid] car la fin de (A) se trouve dans (B)
+case 04:
+    schedule target:
+        - start: 09:30
+        - end: 11:00
+    schedule existant:
+        - start: 09:00
+        - end: 10:00
+    resultat:
+        - [invalid] car le debut de (A) est se trouve dans (B)
+case 05:
+    schedule target:
+        - start: 10:30
+        - end: 11:00
+    schedule existant:
+        - start: 09:00
+        - end: 10:00
+    resultat:
+        - [valid]
+</pre>
