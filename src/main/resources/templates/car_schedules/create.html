@@ -3,16 +3,16 @@
     layout:decorate="~{layouts/fleet_layout}">
 
 <head>
-    <title>Create Car Activity</title>
+    <title>Create Car Schedule</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
     <div layout:fragment="page_content">
         <div class="card">
-            <div class="card-header">Car Activity Form</div>
+            <div class="card-header">Car Schedule Form</div>
             <div class="card-body">
-                <form action="#" th:action="@{/car-activities/create}" th:object="${form}" method="post">
+                <form action="#" th:action="@{/car-schedules/create}" th:object="${form}" method="post">
                     <div class="form-group">
                         <label for="">Description</label>
                         <input type="text" class="form-control" th:field="*{description}">

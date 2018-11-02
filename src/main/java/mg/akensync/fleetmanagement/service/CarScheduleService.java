@@ -6,34 +6,34 @@
 package mg.akensync.fleetmanagement.service;
 
 import java.util.List;
-import mg.akensync.fleetmanagement.model.CarActivity;
-import mg.akensync.fleetmanagement.repository.CarActivityRepository;
+import mg.akensync.fleetmanagement.model.CarSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import mg.akensync.fleetmanagement.repository.CarScheduleRepository;
 
 /**
  *
  * @author khemis_ratsimivony
  */
 @Service
-public class CarActivityService {
+public class CarScheduleService {
 
     @Autowired
-    CarActivityRepository repo;
+    CarScheduleRepository repo;
 
-    public List<CarActivity> getAll() {
+    public List<CarSchedule> getAll() {
         return repo.findAll();
     }
 
-    public void save(CarActivity entity) {
+    public void save(CarSchedule entity) {
         repo.save(entity);
     }
 
-    public void update(CarActivity entity) {
+    public void update(CarSchedule entity) {
         repo.save(entity);
     }
 
-    public CarActivity get(long id) {
+    public CarSchedule get(long id) {
         return repo.getOne(id);
     }
 

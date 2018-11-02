@@ -21,8 +21,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author khemis_ratsimivony
  */
 @Entity
-@Table(name = "car_activity")
-public class CarActivity implements Serializable {
+@Table(name = "car_schedule")
+public class CarSchedule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,18 +53,18 @@ public class CarActivity implements Serializable {
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date creationDate;
 
-    public CarActivity() {
+    public CarSchedule() {
         this.creationDate = new Date();
         this.startDate = new Date();
         this.endDate = new Date();
     }
 
-    public CarActivity(String description) {
+    public CarSchedule(String description) {
         this();
         this.description = description;
     }
 
-    public CarActivity(String description, Car car, AppUser driver, AppUser owner) {
+    public CarSchedule(String description, Car car, AppUser driver, AppUser owner) {
         this();
         this.description = description;
         this.car = car;

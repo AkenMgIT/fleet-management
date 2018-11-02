@@ -4,14 +4,14 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layouts/fleet_layout}">
 <head> 
-    <title>Car Activitie</title> 
+    <title>Car Schedules</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <div layout:fragment="page_content">
         <div class="card">
-            <div class="card-header">Car Activitie List: 
-                <span th:text="${#lists.size(list)}" class="float-right">Car Activities number</span>
+            <div class="card-header">Car Schedules List: 
+                <span th:text="${#lists.size(list)}" class="float-right">Car Schedules number</span>
             </div>
             <div th:if="${!list.empty}">
                 <table class="table mb-0">
@@ -31,9 +31,9 @@ layout:decorate="~{layouts/fleet_layout}">
                             <td th:text="${item?.car?.model}">short name</td>
                             <td th:text="${#dates.format(item.startDate, 'dd-MM-yyyy HH:mm')}">2008</td>
                             <td class="text-right">
-                                <a href="" th:href="@{/car-activities/{id}(id=${item.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
-                                <a href="" th:href="@{/car-activities/edit/{id}(id=${item.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <a href="" th:href="@{/car-activities/delete/{id}(id=${item.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href="" th:href="@{/car-schedules/{id}(id=${item.id})}" class="btn btn-info"><i class="fa fa-search"></i></a>
+                                <a href="" th:href="@{/car-schedules/edit/{id}(id=${item.id})}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <a href="" th:href="@{/car-schedules/delete/{id}(id=${item.id})}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -43,7 +43,7 @@ layout:decorate="~{layouts/fleet_layout}">
                 Empty
             </div>
             <div class="card-footer">
-                    <a href="" th:href="@{/car-activities/create}" class="btn btn-primary"> Create Car Activity </a>
+                    <a href="" th:href="@{/car-schedules/create}" class="btn btn-primary"> Create Car Schedule </a>
             </div>
         </div>
     </div>

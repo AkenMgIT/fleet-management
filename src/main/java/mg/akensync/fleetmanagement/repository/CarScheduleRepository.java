@@ -5,13 +5,13 @@
  */
 package mg.akensync.fleetmanagement.repository;
 
-import mg.akensync.fleetmanagement.model.CarActivity;
+import mg.akensync.fleetmanagement.model.CarSchedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author khemis_ratsimivony
  */
-public interface CarActivityRepository extends JpaRepository<CarActivity,Long>{
+public interface CarScheduleRepository extends JpaRepository<CarSchedule,Long>{
     
 }
